@@ -1,29 +1,46 @@
-program progressao_geometrica
-    
+program geometric_progression
+    !
+    !   Purpose:
+    !       This program calculate a  sequence of non-zero numbers where each term 
+    !       after the first is found by multiplying the previous one by a fixed 
+    !       non-zero number called the common ratio.
+    !   
+    !   Record of revisions:
+    !       Date        Programmer      Description of change
+    !       ====        ==========      =====================
+    !       27/10/2023  Ulissis         Original code
+    !       30/10/2023  Ulissis         Translated to english, and formatted
+    !
     implicit none
     
-    integer :: i, n ! i: contador, n: numero de termos
-    real :: a, r ! a: primeiro termo, r: razao
+    integer :: i, n ! i: count, n: number of terms
+    real :: a, r ! a: first term, r: ratio
 
-    ! Leitura dos dados
-    print *, 'Calculadora de Progressao Geometrica'
-    print *, 'Digite o primeiro termo (a): '
+    ! Read of the input data
+    print *, 'Calculator of Geometric Progression'
+    write(*,'(a)', advance='no') 'Enter the first term (a): '
     read(*,*) a
-    print *, 'Digite a razao (r): '
+    write(*,'(a)', advance='no') 'Enter the ratio (r): '
     read(*,*) r
-    print *, 'Digite o numero de termos (n): '
+    write(*,'(a)', advance='no') 'Enter the number of terms (n): '
     read(*,*) n
 
-    if ( n <= 1 ) then ! Verifica se n é maior que 0, se não for, o programa para
-        write(*,*) 'O numero de termos deve ser maior que 0.'
+    if ( n <= 1 ) then ! Verify if n is greater than 0, if not, stop the program
+        write(*,*) 'The number of terms must be greater than 1!'
         stop
     end if 
 
-    write(*,*) 'Os ', n, ' primeiros termos da Progressao Geometrica sao: '
+    write(*,100) n
 
-    do i = 1, n ! Repete n vezes o bloco de comandos abaixo
-        write(*,*) 'Termo ', i, ': ', a
-        a = a * r ! Calcula o próximo termo
+    100 format('The ', i0, ' first terms of the geometric progression are: ')
+
+    do i = 1, n ! Repeat n times the following block
+
+        write(*,101)  i, a
+        101 format(i0, ' term : ', f0.5)
+
+        a = a * r ! Calculate the next term
+        
     end do
 
-end program progressao_geometrica
+end program geometric_progression
